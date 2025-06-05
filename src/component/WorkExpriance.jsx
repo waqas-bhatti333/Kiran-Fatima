@@ -37,7 +37,7 @@ const WorkExperience = () => {
      </div>
 
 
-     <div className="w-1 h-[60vh] md:h-[37vh] rounded lg:h-[40vh] text-white bg-gradient-to-b from-[#FF014F] to-[#FF5733] mx-4"></div>
+     <div className="w-1 h-[45vh] md:h-[25vh] rounded lg:h-[40vh] text-white bg-gradient-to-b from-[#FF014F] to-[#FF5733] mx-4"></div>
 
 
      <div className="text-wrap">
