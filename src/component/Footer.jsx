@@ -1,104 +1,190 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaCode, FaHeart } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Footer = () => {
- return (
-  <footer className="bg-gray-900 text-white py-12">
-   <div className="container mx-auto px-4">
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-     {/* About Section */}
-     <div className="text-center md:text-left">
-      <h3 className="text-xl font-bold mb-4 flex items-center justify-center md:justify-start">
-       <FaCode className="mr-2" /> About Me
-      </h3>
-      <p className="text-gray-400">
-       I'm a passionate developer who loves building amazing web applications and solving real-world problems. With a focus on clean code, scalability, and user experience, I strive to create impactful solutions.
-      </p>
-     </div>
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+  }, []);
 
-     {/* Quick Links */}
-     <div className="text-center">
-      <h3 className="text-xl font-bold mb-4">Quick Links</h3>
-      <ul className="text-gray-400 flex justify-evenly">
-       <li className="mb-2">
-        <a href="#home" className="hover:text-white transition duration-300">Home</a>
-       </li>
-       <li className="mb-2">
-        <a href="#projects" className="hover:text-white transition duration-300">Projects</a>
-       </li>
-       <li className="mb-2">
-        <a href="#skills" className="hover:text-white transition duration-300">Skills</a>
-       </li>
-       <li className="mb-2">
-        <a href="#contact" className="hover:text-white transition duration-300">Contact</a>
-       </li>
-       <li className="mb-2">
-        <a href="#blog" className="hover:text-white transition duration-300">Blog</a>
-       </li>
-      </ul>
-     </div>
+  const socialLinks = [
+    { 
+      icon: <FaGithub />, 
+      url: "https://github.com/kirankiran12",
+      color: "hover:text-purple-400",
+      animation: "hover:scale-125 hover:-translate-y-1"
+    },
+    { 
+      icon: <FaLinkedin />, 
+      url: "https://www.linkedin.com/in/kiran-fatima-41133431b",
+      color: "hover:text-blue-400",
+      animation: "hover:rotate-12 hover:scale-110"
+    },
+    { 
+      icon: <FaEnvelope />, 
+      url: "mailto:zainab03458717@gmail.com",
+      color: "hover:text-red-400",
+      animation: "hover:translate-y-1 hover:scale-110"
+    }
+  ];
 
-     {/* Resources Section */}
-     <div className="text-center">
-      <h3 className="text-xl  font-bold mb-4">Resources</h3>
-      <ul className="text-gray-400 flex justify-evenly">
-       <li className="mb-2">
-        <a href="#tutorials" className="hover:text-white transition duration-300">Tutorials</a>
-       </li>
-       <li className="mb-2">
-        <a href="#tools" className="hover:text-white transition duration-300">Tools</a>
-       </li>
-       <li className="mb-2">
-        <a href="#community" className="hover:text-white transition duration-300">Community</a>
-       </li>
-      </ul>
-     </div>
+  const quickLinks = [
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Resume", href: "#resume" },
+    { name: "Services", href: "#services" },
+    { name: "Projects", href: "#projects" }
+  ];
 
-     {/* Social Media Links */}
-     <div className="text-center md:text-right">
-      <h3 className="text-xl font-bold mb-4">Connect with Me</h3>
-      <div className="flex justify-center md:justify-end space-x-4">
-       <a
-        href="https://github.com/kirankiran12"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-gray-400 hover:text-white transition duration-300"
-       >
-        <FaGithub className="w-6 h-6" />
-       </a>
-       <a
-        href="https://www.linkedin.com/in/kiran-fatima-41133431b"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-gray-400 hover:text-white transition duration-300"
-       >
-        <FaLinkedin className="w-6 h-6" />
-       </a>
-       <a
-        href="zainab03458717@gmail.com"
-        className="text-gray-400 hover:text-white transition duration-300"
-       >
-        <FaEnvelope className="w-6 h-6" />
-       </a>
+  const resources = [
+    { name: "Tutorials", href: "#tutorials" },
+    { name: "Tools", href: "#tools" },
+    { name: "Community", href: "#community" }
+  ];
+
+  return (
+    <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-10 border-t border-gray-700">
+      <div className="container mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+          {/* About Section */}
+          <div data-aos="fade-up">
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="flex items-center mb-6"
+            >
+              <FaCode className="text-blue-400 mr-3 text-2xl" />
+              <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-500">
+                About Me
+              </h3>
+            </motion.div>
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              className="text-gray-300 leading-relaxed"
+            >
+              I'm a passionate developer who loves building amazing web applications and solving real-world problems. With a focus on clean code, scalability, and user experience.
+            </motion.p>
+          </div>
+
+          {/* Quick Links */}
+          <div data-aos="fade-up" data-aos-delay="100">
+            <h3 className="text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
+              Quick Links
+            </h3>
+            <ul className="space-y-3">
+              {quickLinks.map((link, index) => (
+                <motion.li 
+                  key={index}
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <a 
+                    href={link.href} 
+                    className="text-gray-300 hover:text-blue-400 transition-all duration-300 flex items-center"
+                  >
+                    <motion.span 
+                      className="inline-block mr-2"
+                      whileHover={{ scale: 1.2 }}
+                    >
+                      →
+                    </motion.span>
+                    {link.name}
+                  </a>
+                </motion.li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div data-aos="fade-up" data-aos-delay="150">
+            <h3 className="text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-500">
+              Resources
+            </h3>
+            <ul className="space-y-3">
+              {resources.map((resource, index) => (
+                <motion.li 
+                  key={index}
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <a 
+                    href={resource.href} 
+                    className="text-gray-300 hover:text-green-400 transition-all duration-300 flex items-center"
+                  >
+                    <motion.span 
+                      className="inline-block mr-2"
+                      whileHover={{ rotate: 90 }}
+                    >
+                      ✧
+                    </motion.span>
+                    {resource.name}
+                  </a>
+                </motion.li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Social Links */}
+          <div data-aos="fade-up" data-aos-delay="200">
+            <h3 className="text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">
+              Connect
+            </h3>
+            <div className="flex space-x-4 mb-4">
+              {socialLinks.map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`text-gray-300 ${social.color} bg-gray-800 p-3 rounded-full transition-all duration-300 ${social.animation}`}
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  {social.icon}
+                </motion.a>
+              ))}
+            </div>
+            <motion.p 
+              whileHover={{ scale: 1.02 }}
+              className="text-gray-300 italic"
+            >
+              Follow me for updates, tips, and more!
+            </motion.p>
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <motion.div 
+          className="border-t border-gray-700 pt-8 text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          <motion.p 
+            whileHover={{ scale: 1.02 }}
+            className="text-gray-400"
+          >
+            &copy; {new Date().getFullYear()} Kiran Fatima. All rights reserved.
+          </motion.p>
+          <motion.p 
+            className="text-gray-400 mt-3 flex items-center justify-center"
+            whileHover={{ scale: 1.05 }}
+          >
+            Made with <FaHeart className="text-red-500 mx-2 animate-pulse" /> using 
+            <span className="text-blue-400 ml-1">React </span> and 
+            <span className="text-cyan-400"> Tailwind CSS</span>
+          </motion.p>
+        </motion.div>
       </div>
-      <p className="text-gray-400 mt-4">
-       Follow me for updates, tips, and more!
-      </p>
-     </div>
-    </div>
-
-
-    <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-     <p className="text-gray-400">
-      &copy; {new Date().getFullYear()} Your Kiran Fatima. All rights reserved.
-     </p>
-     <p className="text-gray-400 mt-2 flex items-center justify-center">
-      Made with <FaHeart className="text-red-500 mx-1" /> using React and Tailwind CSS.
-     </p>
-    </div>
-   </div>
-  </footer>
- );
+    </footer>
+  );
 };
 
 export default Footer;

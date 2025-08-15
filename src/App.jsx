@@ -5,23 +5,19 @@ import AboutMe from './component/AboutMe'
 import Services from './component/Services'
 import Projects from './component/Projects'
 import MySkills from './component/MySkills'
-import WorkExpriance from './component/WorkExpriance'
+import EducationWorkExperience from './component/EducationWorkExperience'
 import Footer from './component/Footer'
 import ContactUs from './component/ContactUs'
 
-
-
 function App() {
-
-
-  return (
+return (
     <Fragment >
       <div className='bg-gray-950'>
         <Navbar />
         <HeroSection />
         <AboutMe />
         <MySkills />
-        <WorkExpriance />
+        <EducationWorkExperience />
         <Services />
         <Projects />
         <ContactUs />

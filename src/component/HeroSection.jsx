@@ -1,69 +1,180 @@
 import { Fragment, useEffect } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import pic1 from "../Images/kiranfatima.png";
-import { FaFacebookF, FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import AOS from "aos"
+import { FaFacebookF, FaGithub, FaLinkedinIn } from "react-icons/fa";
+import AOS from "aos";
 import "aos/dist/aos.css";
 
 const HeroSection = () => {
   useEffect(() => {
     AOS.init({
-      offset: 200,
-      duration: 1200,
-      easing: 'ease-in-sine',
-      delay: 300,
+      offset: 100,
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
     });
-  })
-  const openLinkedin = () => {
-    window.open("https://www.linkedin.com/in/kiran-fatima-41133431b");
-  };
-  const openGithub = () => {
-    window.open("https://github.com/kirankiran12");
+
+    // Add floating particles styles dynamically
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes float {
+        0% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
+        50% { opacity: 0.5; }
+        100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+      }
+      @keyframes pulse {
+        0% { transform: scale(1); opacity: 0.7; }
+        50% { transform: scale(1.05); opacity: 1; }
+        100% { transform: scale(1); opacity: 0.7; }
+      }
+      .animate-float { animation: float 6s infinite ease-in-out; }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
+  const openSocial = (url) => {
+    window.open(url);
   };
 
   return (
     <Fragment>
-      <div id="home" className="flex lg:mt-16 md:mt-14 sm:mt-24 justify-center items-center lg:h-[85vh] md:h-[50vh] sm:h-[20vh] px-6 md:px-12 lg:px-24">
-        <div className="flex flex-col md:flex-row items-center gap-8 w-full">
-          <div data-aos="fade-right" className="w-full md:w-[65%] text-center md:text-start mt-24 md:mt-0">
-            <h1 className="text-white text-3xl md:text-4xl font-normal">
-              Hi, I’m <span className="text-[#FF014F]">Kiran Fatima</span><br /> 
+      <section id="home" className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20 ">
+        <div className="container mx-auto px-6 md:px-12 lg:px-24 mt-15">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+            {/* Text Content */}
+            <div className="w-full md:w-1/2 space-y-8">
+              <h1 
+                className="text-4xl md:text-5xl font-bold text-white leading-tight"
+                data-aos="fade-up"
+              >
+                <span className="block">Hi, I'm</span>
+                <span 
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500"
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                >
+                  Kiran Fatima
+                </span>
+              </h1>
 
-              <span className="text-white">
+              <div 
+                className="text-2xl text-white font-medium"
+                data-aos="fade-down"
+                data-aos-delay="400"
+              >
                 <Typewriter
-                  words={["Flutter Developer", "Android Developer"]}
+                  words={["Flutter Developer", "Android Developer", "UI/UX Specialist"]}
                   loop={0}
                   cursor
-                  cursorStyle="|"
-                  typeSpeed={40}
+                  cursorStyle="_"
+                  typeSpeed={70}
                   deleteSpeed={50}
-                  delaySpeed={1000}
+                  delaySpeed={2000}
                 />
-              </span>
-            </h1>
-            <p className="text-white text-start mt-2">
-            I am a Flutter Developer specializing in building responsive, cross-platform mobile applications using Flutter and Dart. I craft modern UI/UX, write clean and scalable code, and integrate seamless APIs for smooth and high-performance user experiences. Let’s build something amazing together!
-            </p>
-            <div className="mt-4">
-              <h2 className="text-white">Find me on</h2>
-              <div className="flex justify-center md:justify-start items-center gap-6 mt-2">
-                <button className="text-white cursor-pointer flex justify-center bg-[#1E2125] h-10 w-10 rounded items-center">
-                  <FaFacebookF className="h-5 w-5" />
-                </button>
-                <button onClick={openLinkedin} className="text-white cursor-pointer flex justify-center bg-[#1E2125] h-10 w-10 rounded items-center">
-                  <FaLinkedinIn className="h-5 w-5" />
-                </button>
-                <button onClick={openGithub} className="text-white cursor-pointer flex justify-center bg-[#1E2125] h-10 w-10 rounded items-center">
-                  <FaGithub className="h-5 w-5" />
-                </button>
+              </div>
+
+              <p 
+                className="text-sx text-gray-300 leading-relaxed"
+                data-aos="zoom-in-up"
+                data-aos-delay="600"
+              >
+                I specialize in building responsive, cross-platform mobile applications using Flutter and Dart. 
+                I craft modern UI/UX, write clean and scalable code, and integrate seamless APIs for smooth 
+                and high-performance user experiences. Let's build something amazing together!
+              </p>
+
+              <div 
+                className="pt-4"
+                data-aos="fade-up"
+                data-aos-delay="800"
+              >
+                <h3 className="text-gray-400 mb-4">Connect with me</h3>
+                <div className="flex gap-4">
+                  {[
+                    { icon: <FaFacebookF />, color: "from-blue-600 to-blue-800", url: "#" },
+                    { icon: <FaLinkedinIn />, color: "from-cyan-600 to-blue-700", url: "https://www.linkedin.com/in/kiran-fatima-41133431b" },
+                    { icon: <FaGithub />, color: "from-purple-600 to-gray-900", url: "https://github.com/kirankiran12" }
+                  ].map((social, index) => (
+                    <button
+                      key={index}
+                      onClick={() => openSocial(social.url)}
+                      className={`h-10 w-10 rounded-full flex items-center justify-center text-white bg-gradient-to-br ${social.color} shadow-lg hover:scale-110 transition-transform duration-300`}
+                    >
+                      {social.icon}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Profile Image with Enhanced Animations */}
+            <div 
+              className="w-full md:w-1/2 flex justify-center"
+              data-aos="zoom-in"
+              data-aos-delay="1000"
+            >
+              <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 group">
+                {/* Floating particles background */}
+                <div className="absolute inset-0 rounded-full overflow-hidden">
+                  {[...Array(12)].map((_, i) => (
+                    <div 
+                      key={i}
+                      className="absolute rounded-full bg-cyan-400 opacity-20 animate-float"
+                      style={{
+                        width: `${Math.random() * 10 + 5}px`,
+                        height: `${Math.random() * 10 + 5}px`,
+                        top: `${Math.random() * 100}%`,
+                        left: `${Math.random() * 100}%`,
+                        animationDuration: `${Math.random() * 10 + 10}s`,
+                        animationDelay: `${Math.random() * 5}s`
+                      }}
+                    />
+                  ))}
+                </div>
+
+                {/* Glowing gradient halo */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 blur-lg opacity-0 group-hover:opacity-50 transition-all duration-700 scale-90 group-hover:scale-100" />
+
+                {/* Main profile image */}
+                <img
+                  src={pic1}
+                  alt="Kiran Fatima"
+                  className="relative z-10 w-full h-full rounded-full object-cover border-4 border-transparent 
+                  group-hover:border-cyan-400 transition-all duration-700 transform 
+                  group-hover:scale-[1.03] group-hover:rotate-[5deg] shadow-xl 
+                  group-hover:shadow-cyan-500/30"
+                />
+
+                {/* Animated border rings */}
+                <div className="absolute inset-0 rounded-full border-4 border-transparent group-hover:border-white/30 transition-all duration-1000 scale-95 group-hover:scale-105" />
+                <div className="absolute inset-0 rounded-full border-4 border-transparent group-hover:border-cyan-400/40 transition-all duration-700 scale-90 group-hover:scale-100 delay-75" />
+
+                {/* Floating dots animation */}
+                <div className="absolute -inset-4 overflow-hidden rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000">
+                  {[...Array(8)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="absolute rounded-full bg-cyan-400 animate-float"
+                      style={{
+                        width: '6px',
+                        height: '6px',
+                        top: `${Math.random() * 100}%`,
+                        left: `${Math.random() * 100}%`,
+                        animationDuration: `${Math.random() * 5 + 5}s`,
+                        animationDelay: `${Math.random() * 2}s`
+                      }}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-          <div data-aos="zoom-in-up" className="hidden md:block md:w-[40%]">
-            <img src={pic1} alt="Hero" className="w-full h-auto" />
-          </div>
         </div>
-      </div>
+      </section>
     </Fragment>
   );
 };
