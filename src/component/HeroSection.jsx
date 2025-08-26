@@ -10,12 +10,12 @@ const HeroSection = () => {
     AOS.init({
       offset: 100,
       duration: 800,
-      easing: 'ease-in-out',
-      once: true
+      easing: "ease-in-out",
+      once: true,
     });
 
     // Add floating particles styles dynamically
-    const style = document.createElement('style');
+    const style = document.createElement("style");
     style.textContent = `
       @keyframes float {
         0% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
@@ -42,17 +42,22 @@ const HeroSection = () => {
 
   return (
     <Fragment>
-      <section id="home" className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20 ">
+      <section
+        id="home"
+        className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20 "
+      >
         <div className="container mx-auto px-6 md:px-12 lg:px-24 mt-15">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+          {/* === Layout reversed on mobile === */}
+          <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+            
             {/* Text Content */}
             <div className="w-full md:w-1/2 space-y-8">
-              <h1 
+              <h1
                 className="text-4xl md:text-5xl font-bold text-white leading-tight"
                 data-aos="fade-up"
               >
                 <span className="block">Hi, I'm</span>
-                <span 
+                <span
                   className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500"
                   data-aos="fade-up"
                   data-aos-delay="200"
@@ -61,13 +66,17 @@ const HeroSection = () => {
                 </span>
               </h1>
 
-              <div 
+              <div
                 className="text-2xl text-white font-medium"
                 data-aos="fade-down"
                 data-aos-delay="400"
               >
                 <Typewriter
-                  words={["Flutter Developer", "Android Developer", "UI/UX Specialist"]}
+                  words={[
+                    "Flutter Developer",
+                    "Android Developer",
+                    "UI/UX Specialist",
+                  ]}
                   loop={0}
                   cursor
                   cursorStyle="_"
@@ -77,27 +86,37 @@ const HeroSection = () => {
                 />
               </div>
 
-              <p 
+              <p
                 className="text-sx text-gray-300 leading-relaxed"
                 data-aos="zoom-in-up"
                 data-aos-delay="600"
               >
-                I specialize in building responsive, cross-platform mobile applications using Flutter and Dart. 
-                I craft modern UI/UX, write clean and scalable code, and integrate seamless APIs for smooth 
-                and high-performance user experiences. Let's build something amazing together!
+                I specialize in building responsive, cross-platform mobile
+                applications using Flutter and Dart. I craft modern UI/UX, write
+                clean and scalable code, and integrate seamless APIs for smooth
+                and high-performance user experiences. Let's build something
+                amazing together!
               </p>
 
-              <div 
-                className="pt-4"
-                data-aos="fade-up"
-                data-aos-delay="800"
-              >
+              <div className="pt-4" data-aos="fade-up" data-aos-delay="800">
                 <h3 className="text-gray-400 mb-4">Connect with me</h3>
                 <div className="flex gap-4">
                   {[
-                    { icon: <FaFacebookF />, color: "from-blue-600 to-blue-800", url: "#" },
-                    { icon: <FaLinkedinIn />, color: "from-cyan-600 to-blue-700", url: "https://www.linkedin.com/in/kiran-fatima-41133431b" },
-                    { icon: <FaGithub />, color: "from-purple-600 to-gray-900", url: "https://github.com/kirankiran12" }
+                    {
+                      icon: <FaFacebookF />,
+                      color: "from-blue-600 to-blue-800",
+                      url: "#",
+                    },
+                    {
+                      icon: <FaLinkedinIn />,
+                      color: "from-cyan-600 to-blue-700",
+                      url: "https://www.linkedin.com/in/kiran-fatima-41133431b",
+                    },
+                    {
+                      icon: <FaGithub />,
+                      color: "from-purple-600 to-gray-900",
+                      url: "https://github.com/kirankiran12",
+                    },
                   ].map((social, index) => (
                     <button
                       key={index}
@@ -112,7 +131,7 @@ const HeroSection = () => {
             </div>
 
             {/* Profile Image with Enhanced Animations */}
-            <div 
+            <div
               className="w-full md:w-1/2 flex justify-center"
               data-aos="zoom-in"
               data-aos-delay="1000"
@@ -121,7 +140,7 @@ const HeroSection = () => {
                 {/* Floating particles background */}
                 <div className="absolute inset-0 rounded-full overflow-hidden">
                   {[...Array(12)].map((_, i) => (
-                    <div 
+                    <div
                       key={i}
                       className="absolute rounded-full bg-cyan-400 opacity-20 animate-float"
                       style={{
@@ -130,7 +149,7 @@ const HeroSection = () => {
                         top: `${Math.random() * 100}%`,
                         left: `${Math.random() * 100}%`,
                         animationDuration: `${Math.random() * 10 + 10}s`,
-                        animationDelay: `${Math.random() * 5}s`
+                        animationDelay: `${Math.random() * 5}s`,
                       }}
                     />
                   ))}
@@ -149,6 +168,14 @@ const HeroSection = () => {
                   group-hover:shadow-cyan-500/30"
                 />
 
+                {/* === Added Text Badges === */}
+                <span className="absolute top-2 left-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs md:text-sm font-semibold px-3 py-1 rounded-full shadow-lg z-20">
+                  Flutter Developer
+                </span>
+                <span className="absolute bottom-2 right-2 bg-gradient-to-r from-purple-500 to-pink-600 text-white text-xs md:text-sm font-semibold px-3 py-1 rounded-full shadow-lg z-20">
+                  AOS Developer
+                </span>
+
                 {/* Animated border rings */}
                 <div className="absolute inset-0 rounded-full border-4 border-transparent group-hover:border-white/30 transition-all duration-1000 scale-95 group-hover:scale-105" />
                 <div className="absolute inset-0 rounded-full border-4 border-transparent group-hover:border-cyan-400/40 transition-all duration-700 scale-90 group-hover:scale-100 delay-75" />
@@ -160,12 +187,12 @@ const HeroSection = () => {
                       key={i}
                       className="absolute rounded-full bg-cyan-400 animate-float"
                       style={{
-                        width: '6px',
-                        height: '6px',
+                        width: "6px",
+                        height: "6px",
                         top: `${Math.random() * 100}%`,
                         left: `${Math.random() * 100}%`,
                         animationDuration: `${Math.random() * 5 + 5}s`,
-                        animationDelay: `${Math.random() * 2}s`
+                        animationDelay: `${Math.random() * 2}s`,
                       }}
                     />
                   ))}
