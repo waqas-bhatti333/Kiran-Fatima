@@ -2,6 +2,9 @@ import { Fragment, useState } from "react";
 import { IoMdMenu } from "react-icons/io";
 import { IoCloseSharp } from "react-icons/io5";
 import { IoLogoBuffer } from "react-icons/io5";
+import { FaCrown} from "react-icons/fa";
+
+
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,7 +31,7 @@ const Navbar = () => {
               setActiveLink("home");
             }}
           >
-            <IoLogoBuffer className="text-cyan-400 text-3xl mr-2 group-hover:text-cyan-300 transition-all duration-500 hover:rotate-180" />
+            <FaCrown  className="text-cyan-400 text-3xl mr-2 group-hover:text-cyan-300 transition-all duration-500 hover:rotate-360" />
             <span className="text-white font-bold text-xl hidden sm:block group-hover:text-cyan-300 transition-colors duration-300">
               Kiran Fatima
             </span>

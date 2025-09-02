@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaCode, FaHeart } from 'react-icons/fa';
+import { FaUser } from "react-icons/fa";
 import { motion } from 'framer-motion';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -58,7 +59,7 @@ const Footer = () => {
               whileHover={{ scale: 1.05 }}
               className="flex items-center mb-6"
             >
-              <FaCode className="text-blue-400 mr-3 text-2xl" />
+              <FaUser className="text-blue-400 mr-3 text-2xl" />
               <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-500">
                 About Me
               </h3>
@@ -161,27 +162,10 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <motion.div 
-          className="border-t border-gray-700 pt-8 text-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-        >
-          <motion.p 
-            whileHover={{ scale: 1.02 }}
-            className="text-gray-400"
-          >
-            &copy; {new Date().getFullYear()} Kiran Fatima. All rights reserved.
-          </motion.p>
-          <motion.p 
-            className="text-gray-400 mt-3 flex items-center justify-center"
-            whileHover={{ scale: 1.05 }}
-          >
-            Made with <FaHeart className="text-red-500 mx-2 animate-pulse" /> using 
-            <span className="text-blue-400 ml-1">React </span> and 
-            <span className="text-cyan-400"> Tailwind CSS</span>
-          </motion.p>
-        </motion.div>
+         <p data-aos="fade-up" className="border-t border-gray-800 pt-8 text-center">
+          Made with <span className="">❤️</span> by <span className="font-bold">Kiran Fatima</span> &copy; {new Date().getFullYear()}
+        </p>
+     
       </div>
     </footer>
   );
