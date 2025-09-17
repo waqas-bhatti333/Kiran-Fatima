@@ -173,7 +173,7 @@ const HeroSection = () => {
                   Flutter Developer
                 </span>
                 <span className="absolute bottom-2 right-2 bg-gradient-to-r from-purple-500 to-pink-600 text-white text-xs md:text-sm font-semibold px-3 py-1 rounded-full shadow-lg z-20">
-                  AOS Developer
+                  IOS Developer
                 </span>
 
                 {/* Animated border rings */}
