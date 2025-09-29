@@ -38,7 +38,7 @@ const AboutMe = () => {
   const handleDownload = () => {
     const link = document.createElement("a");
     link.href = resume;
-    link.download = "KiranFatima.pdf";
+    link.download = "Kiran Fatima.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
